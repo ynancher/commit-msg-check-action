@@ -4,6 +4,7 @@ This GitHub Action enforces consistent commit message formatting for Qualcomm pr
 - Commit Subject : Verifies that a subject line is present and does not exceed the specified character limit.
 - Commit Body : Ensures a body is provided and that each line adheres to the defined word wrap limit.
 - Check Blank Line Flag: When true, ensures a blank line between the commit subject, body, and Signed-off-by signature for better readability.
+- Strict Line Length Check: When true (default), every body line must fit within `body-char-limit`. When false, a single token that is itself longer than the limit (for example, a long URL or a file path) is allowed; only lines that wrap past the limit at a word boundary fail. Useful when commits routinely reference long links but you still want regular prose to wrap.
 
 # Usage
 Create a new GitHub Actions workflow in your project, e.g. at .github/workflows/commit-check.yml
@@ -35,6 +36,7 @@ Create a new GitHub Actions workflow in your project, e.g. at .github/workflows/
               body-char-limit: 72
               sub-char-limit: 50
               check-blank-line: true
+              strict-line-length-check: true
               
 
 
